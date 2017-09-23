@@ -1,0 +1,39 @@
+{
+  "name": "spider-mzitu",
+  "version": "1.0.0",
+  "description": "- 下载妹子图 http://www.mzitu.com/\r - 下载妹子图，并且存入硬盘",
+  "main": "index.js",
+  "bin": {
+    "spider-mzitu": "index.js"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "ejs": "^2.5.7",
+    "gulp-less": "^3.3.2",
+    "iconv-lite": "^0.4.18",
+    "istextorbinary": "^2.1.0",
+    "log4js": "^2.3.3",
+    "readable-stream": "^2.3.3",
+    "replacestream": "^4.0.3",
+    "request": "^2.81.0",
+    "should": "^11.2.1",
+    "supertest": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owen-carter/spider-mzitu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/owen-carter/spider-mzitu/issues"
+  },
+  "homepage": "https://github.com/owen-carter/spider-mzitu#readme"
+}
