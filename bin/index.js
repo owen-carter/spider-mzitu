@@ -117,15 +117,6 @@ class Spider {
     }
 
 
-    getImage() {
-
-    }
-
-    parseImage() {
-
-    }
-
-
 }
 
 module.exports = Spider;
