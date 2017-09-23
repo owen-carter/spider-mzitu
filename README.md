@@ -14,22 +14,3 @@
 ```bash
 curl -o- https://raw.githubusercontent.com/owen-carter/spider-mzitu/master/start.sh | bash
 ```
-
-### 工作原理
-- 开始工作
-- 使用种子地址
-- 获取首页
-- 拿到首页
-- 分析可用链接
-- 拿到可用链接
-- 存入链接池子
-- 获取下一个链接
-- 开始下一轮怕页面
--
-
-
-### 有一个进程
-- 获取一批url从子进程
-- 拿到页面，分析可用链接
-- 保持当前链接数字在100以内
-- 如果
