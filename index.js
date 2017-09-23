@@ -6,12 +6,13 @@ const Spider = require('./bin');
 const app = new Spider();
 
 app.init('http://www.mzitu.com/');
-app.registerParser(($) => {
-    let links, urls;
-    links = $("a[target='_blank']");
-    links = Array.from(links);
-    return links.map((ele) => {
-        return $(ele).attr('href')
+app.registerImageParser(($) => {
+    let imgs, urls;
+    imgs = $(".main-image img");
+    imgs = Array.from(imgs);
+    // 同时想办法把图片地址给解析了
+    return imgs.map((ele) => {
+        return $(ele).attr('src')
     });
 });
 app.run();

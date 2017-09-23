@@ -5,6 +5,7 @@ const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 const mkdirp = require('mkdirp');
 const logger = require('./log.conf');
+const child_process = require('child_process');
 
 class Spider {
     constructor() {
@@ -16,6 +17,15 @@ class Spider {
     init(seedUrl) {
         this.addToQueen([seedUrl]);
         Spider.createWorkSpace(this.workDirectory)
+        this.forkDownload()
+    }
+
+    forkDownload() {
+        this.wGeter = child_process.fork('./bin/download.js');
+    }
+
+    addDownTask(task) {
+        this.wGeter.send(task)
     }
 
     run() {
@@ -65,26 +75,44 @@ class Spider {
         });
     }
 
-    registerParser(parser) {
+    registerImageParser(parser) {
         if (parser) {
-            this.parser = parser.bind(this);
+            this.imageParser = parser.bind(this);
             return this;
         }
     }
+
+    parseUrl($) {
+        let links, urls;
+        links = $("a[target='_blank']");
+        links = Array.from(links);
+        // 同时想办法把图片地址给解析了
+        return links.map((ele) => {
+            return $(ele).attr('href')
+        });
+    }
+
 
     /***
      * 解析页面
      * @param html
      */
     parsePage(html) {
-        let $, urls;
+        let $, urls, images;
         try {
             $ = cheerio.load(html, {decodeEntities: false});
         } catch (error) {
             logger.error(error)
         }
-        urls = this.parser($);
+        // 拿到页面中有用的url
+        urls = this.parseUrl($);
         this.addToQueen(urls);
+
+        // 解析url应该输入应用本身要做的事情，用户要做的事情很简单，就只是解析图片或者视频，因此
+        images = this.imageParser($);
+        this.addDownTask(images);
+
+        // 开始下一个循环
         this.loop();
     }
 
