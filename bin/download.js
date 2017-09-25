@@ -15,11 +15,11 @@ class wGeter {
         });
 
         setInterval(() => {
-            if (this.taskList.length > 1 && this.taskNumber < 20) {
-                this.curl(this.taskList.shift())
+            if (this.taskList.length > 1 && this.taskNumber < 200) {
+                this.curl(this.taskList.shift());
                 this.taskNumber++;
             }
-        }, 1000 * 3)
+        }, 1000 * 0.01)
 
     }
 
@@ -35,13 +35,12 @@ class wGeter {
         logger.info(`downloading ${filename}`);
 
         stream = fs.createWriteStream(path);
-        request({
-            url: url,
-            headers: {'Referer': 'http://www.mzitu.com/103478'}
-        })
+        let referer = {'Referer': 'http://www.mzitu.com/103478'};
+        request({url: url, headers: referer})
             .pipe(stream)
             .on('error', (err) => {
-                logger.error(err)
+                logger.error(err);
+                this.taskNumber--;
             })
             .on('close', () => {
                 this.taskNumber--;

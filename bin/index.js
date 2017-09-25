@@ -42,7 +42,14 @@ class Spider {
     }
 
     addToQueen(urls) {
-        this.activeUrlPool.push(...urls)
+        urls.forEach((url, idx) => {
+            if (!this.activeUrlPool.includes(url) && !this.inactiveUrlPool.includes(url)) {
+                this.activeUrlPool.push(url)
+                logger.info(`activePool has ${this.activeUrlPool.length} elements`);
+            } else {
+                logger.error(`${url} is repeat ...`)
+            }
+        });
     }
 
     static createWorkSpace(dir) {
@@ -56,10 +63,10 @@ class Spider {
     getPage(href, callBack) {
         href = `${href}`;
         let conf = {
-            url: href,
-            method: "GET",
+            url     : href,
+            method  : "GET",
             encoding: null,
-            headers: {
+            headers : {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36'
             }
         };
