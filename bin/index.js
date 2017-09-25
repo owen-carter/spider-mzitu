@@ -74,7 +74,7 @@ class Spider {
         request(conf, (error, response, body) => {
             if (error) {
                 logger.error(`get a page ${href} fail!`);
-                return;
+                return this.loop();
             }
             logger.info(`get ${href} succeed!`);
             body = iconv.decode(body, 'gb2312');
