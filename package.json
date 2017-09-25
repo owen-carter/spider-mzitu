@@ -24,7 +24,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "app": "node index.js"
+    "app": "node index.js",
+    "channglog": "github-changes -o owen-carter -r spider-mzitu -a --only-pulls --use-commit-body"
   },
   "repository": {
     "type": "git",
