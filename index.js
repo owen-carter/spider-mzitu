@@ -5,14 +5,16 @@
 const Spider = require('./bin');
 const app = new Spider();
 
-app.init('http://www.mzitu.com/');
+app.init('http://blog.csdn.net/zhangyuan19880606/article/details/51993011');
 app.registerImageParser(($) => {
-    let imgs, urls;
-    imgs = $(".main-image img");
-    imgs = Array.from(imgs);
+    let links;
+    links = $("a");
+    links = Array.from(links);
     // 同时想办法把图片地址给解析了
-    return imgs.map((ele) => {
-        return $(ele).attr('src')
+    return links.map((ele) => {
+        if ( $(ele).text().includes('面试') ){
+            return $(ele).attr('href')
+	}
     });
 });
 app.run();
