@@ -10,17 +10,21 @@ build(){
 }
 
 start(){
-    docker rm ${containerName}
     docker run --name ${containerName} -d -p 80:8000 ${imageName}
 }
 
+remove(){
+    docker rm ${containerName}
+}
 
-cmdList=( "build" "start" "exit" )
+
+cmdList=( "build" "start" "remove" "exit" )
 
 OPTION=$(${window} --title "Docker Menu Dialog" --menu "Choose your option" 10 60 4 \
 "0" "just build" \
 "1" "just run" \
-"2" "exit"  3>&1 1>&2 2>&3)
+"2" "just remove" \
+"3" "exit"  3>&1 1>&2 2>&3)
 
 exitStatus=$?
 if [ ${exitStatus} = 0 ]; then
