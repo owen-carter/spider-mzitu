@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # author : owen-carter
+
+declare window=whiptail
+declare window=dialog
+
 build(){
     docker build -t app.dmg .
 }
