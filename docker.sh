@@ -3,13 +3,13 @@
 
 declare window=whiptail
 declare window=dialog
-
+declare imageName="app.dmg"
 build(){
-    docker build -t app.dmg .
+    docker build -t ${imageName} .
 }
 
 start(){
-    docker run --name statusbarcontainer -d -p 80:8000 statusbarimg
+    docker run --name ${imageName} -d -p 80:8000 statusbarimg
 }
 
 
