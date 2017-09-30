@@ -10,5 +10,5 @@ WORKDIR /app
 RUN npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist install
 RUN npm install
 
-ENTRYPOINT ["./entrypoint.sh"]
+#ENTRYPOINT ["./entrypoint.sh"]
 CMD ["npm", "run","app"]

@@ -10,6 +10,7 @@ build(){
 }
 
 start(){
+    docker rm ${containerName}
     docker run --name ${containerName} -d -p 80:8000 ${imageName}
 }
 
