@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-docker run --name statusbarcontainer -d -p 80:8000 statusbarimg
-
+# author : owen-carter
 build(){
     docker build -t app.dmg .
 }
