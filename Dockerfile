@@ -4,8 +4,8 @@
 FROM daocloud.io/node:7
 LABEL maintainer owen-carter
 
-COPY ./
-WORKDIR ./
+COPY . /app
+WORKDIR /app
 
 RUN npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist install
 RUN npm install
