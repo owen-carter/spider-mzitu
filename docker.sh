@@ -4,12 +4,13 @@
 declare window=whiptail
 declare window=dialog
 declare imageName="app.dmg"
+declare containerName="spider-mzitu"
 build(){
     docker build -t ${imageName} .
 }
 
 start(){
-    docker run --name ${imageName} -d -p 80:8000 statusbarimg
+    docker run --name ${imageName} -d -p 80:8000 ${containerName}
 }
 
 
