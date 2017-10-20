@@ -5,16 +5,16 @@
 const Spider = require('./bin');
 const app = new Spider();
 
-app.init('http://blog.csdn.net/zhangyuan19880606/article/details/51993011');
+// 填写网站首页地址
+app.init('http://www.mzitu.com/');
 app.registerImageParser(($) => {
-    let links;
-    links = $("a");
-    links = Array.from(links);
-    // 同时想办法把图片地址给解析了
-    return links.map((ele) => {
-        if ( $(ele).text().includes('面试') ){
-            return $(ele).attr('href')
-	}
+    let imgs, urls;
+    // 填写图片的选择器
+    imgs = $(".main-image img");
+    imgs = Array.from(imgs);
+
+    return imgs.map((ele) => {
+        return $(ele).attr('src')
     });
 });
 app.run();
