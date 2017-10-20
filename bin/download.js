@@ -31,7 +31,6 @@ class wGeter {
         let stream, filename, path;
         filename = url.split('/');
         filename = filename.pop();
-        // filename = url;
         path = './images/' + filename;
         logger.info(`downloading ${filename}`);
 
