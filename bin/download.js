@@ -29,8 +29,10 @@ class wGeter {
 
     curl(url) {
         let stream, filename, path;
-        filename = url;
-        path = './images/' + filename
+        filename = url.split('/');
+        filename = filename.pop();
+        // filename = url;
+        path = './images/' + filename;
         logger.info(`downloading ${filename}`);
 
         stream = fs.createWriteStream(path);
