@@ -17,6 +17,10 @@
 curl -o- https://raw.githubusercontent.com/owen-carter/spider-mzitu/master/start.sh | bash
 ```
 
+### Image 
+![image](./images/snipaste_20171118_192446.png)
+
+
 ### 如何自定义规则
 ```javascript
 const Spider = require('./bin');
